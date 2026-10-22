@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refer a Patient | PointCare Health Services</title>
+<meta name="description" content="Securely refer a patient to PointCare Health Services by online form, phone, or fax.">
+<link rel="canonical" href="https://www.pointcarehs.com/refer">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<!-- Patient health information is entered on this page: no ad pixels. -->
+<body data-tracking="off">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="container">
+    <span>Call: <a data-phone></a></span>
+    <span>Referral fax: <strong data-fax></strong></span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/">
+      <span class="logo-mark" aria-hidden="true">P</span>
+      <span class="logo-text">PointCare<small>Health Services</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#partners">For Providers</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/refer">Refer a Patient</a></li>
+      <li><a class="btn btn-primary" href="/contact">Get Started</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">For providers</span>
+    <h1>Refer a patient</h1>
+    <p>We acknowledge every referral the same business day. Use the secure form below, call our intake line, or fax the referral with the face sheet and orders.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="container form-wrap">
+    <div>
+      <!-- Filled by the script below when ghlReferralFormUrl is set in config.js.
+           The form itself is hosted by GoHighLevel (HIPAA mode, under your BAA),
+           so patient information never passes through this website. -->
+      <div id="referral-embed" hidden></div>
+      <div id="referral-fallback" class="form-card">
+        <h3>Send a referral</h3>
+        <p>Our online referral form is coming soon. In the meantime:</p>
+        <ul class="checklist">
+          <li>Call intake: <a data-phone></a></li>
+          <li>Fax referral, face sheet, and orders to <strong data-fax></strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="side-card">
+      <h3>What to include</h3>
+      <ul class="checklist">
+        <li>Patient demographics and face sheet</li>
+        <li>Insurance information</li>
+        <li>Signed order / reason for referral</li>
+        <li>Relevant clinical notes</li>
+        <li>Referring provider and best contact</li>
+      </ul>
+      <dl>
+        <dt>Intake line</dt><dd><a data-phone></a></dd>
+        <dt>Referral fax</dt><dd data-fax></dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="legal">
+      <span>&copy; <span data-year></span> PointCare Health Services. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> · In an emergency, call 911.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/site.js"></script>
+<script>
+  (function () {
+    var url = (window.PCHS_CONFIG || {}).ghlReferralFormUrl;
+    if (!url) return;
+    var frame = document.createElement("iframe");
+    frame.src = url;
+    frame.title = "Patient referral form";
+    frame.className = "embed-frame";
+    frame.loading = "lazy";
+    var box = document.getElementById("referral-embed");
+    box.appendChild(frame);
+    box.hidden = false;
+    document.getElementById("referral-fallback").hidden = true;
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | PointCare Health Services</title>
+<meta name="description" content="Request an in-home evaluation or partner with PointCare Health Services.">
+<link rel="canonical" href="https://www.pointcarehs.com/contact">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<!-- data-tracking="off": no ad pixels on pages that collect personal details. -->
+<body data-tracking="off">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="container">
+    <span>Call: <a data-phone></a></span>
+    <span>Referral fax: <strong data-fax></strong></span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/">
+      <span class="logo-mark" aria-hidden="true">P</span>
+      <span class="logo-text">PointCare<small>Health Services</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#partners">For Providers</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/refer">Refer a Patient</a></li>
+      <li><a class="btn btn-primary" href="/contact">Get Started</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Get started</span>
+    <h1>Let's talk about your care</h1>
+    <p>Send a quick request and our intake team will call you back, usually within one business hour. Prefer to talk now? Call <a data-phone></a>.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="container form-wrap">
+    <div class="form-card">
+      <div class="tabs" role="tablist" aria-label="Who is reaching out">
+        <button role="tab" id="tab-patient" aria-controls="panel-patient" aria-selected="true" data-hash="patient">Patient or family</button>
+        <button role="tab" id="tab-facility" aria-controls="panel-facility" aria-selected="false" tabindex="-1" data-hash="facility">Facility or provider</button>
+      </div>
+
+      <!-- Patient / family -->
+      <div role="tabpanel" id="panel-patient" aria-labelledby="tab-patient">
+        <form data-lead-type="patient" novalidate>
+          <div class="fields">
+            <div><label for="p_first">First name</label><input id="p_first" name="first_name" autocomplete="given-name" required maxlength="60"></div>
+            <div><label for="p_last">Last name</label><input id="p_last" name="last_name" autocomplete="family-name" required maxlength="60"></div>
+            <div><label for="p_phone">Phone</label><input id="p_phone" name="phone" type="tel" autocomplete="tel" required placeholder="(555) 555-5555"></div>
+            <div><label for="p_email">Email <span class="opt">(optional)</span></label><input id="p_email" name="email" type="email" autocomplete="email"></div>
+            <div><label for="p_zip">ZIP code</label><input id="p_zip" name="postal_code" inputmode="numeric" autocomplete="postal-code" required pattern="\d{5}(-\d{4})?" maxlength="10"></div>
+            <div>
+              <label for="p_rel">I am a…</label>
+              <select id="p_rel" name="relationship" required>
+                <option value="">Select one</option>
+                <option>Patient</option>
+                <option>Family member / caregiver</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="p_inq">How can we help?</label>
+              <select id="p_inq" name="inquiry" required>
+                <option value="">Select one</option>
+                <option>Schedule an evaluation</option>
+                <option>Insurance question</option>
+                <option>General question</option>
+              </select>
+            </div>
+            <div>
+              <label for="p_time">Best time to call <span class="opt">(optional)</span></label>
+              <select id="p_time" name="best_time">
+                <option value="">No preference</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Evening</option>
+                <option>Any time</option>
+              </select>
+            </div>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="p_website">Website</label><input id="p_website" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="consent">
+            <input type="checkbox" name="consent">
+            <span>I agree to receive calls and text messages, including automated ones, and emails from PointCare Health Services about my request at the number and email provided. Consent is not required to receive services. Message frequency varies; message and data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</span>
+          </label>
+          <p class="form-note">Please don't include medical details here. We'll discuss them privately when we call.</p>
+          <div class="turnstile"></div>
+          <div class="form-status" role="alert"></div>
+          <button class="btn btn-primary" type="submit">Request a Call Back</button>
+        </form>
+      </div>
+
+      <!-- Facility / provider -->
+      <div role="tabpanel" id="panel-facility" aria-labelledby="tab-facility" hidden>
+        <form data-lead-type="facility" novalidate>
+          <div class="fields">
+            <div><label for="f_first">First name</label><input id="f_first" name="first_name" autocomplete="given-name" required maxlength="60"></div>
+            <div><label for="f_last">Last name</label><input id="f_last" name="last_name" autocomplete="family-name" required maxlength="60"></div>
+            <div><label for="f_org">Organization</label><input id="f_org" name="organization" autocomplete="organization" required maxlength="120"></div>
+            <div><label for="f_role">Your role <span class="opt">(optional)</span></label><input id="f_role" name="role" autocomplete="organization-title" maxlength="80" placeholder="e.g. Discharge planner"></div>
+            <div><label for="f_phone">Phone</label><input id="f_phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div><label for="f_email">Work email</label><input id="f_email" name="email" type="email" autocomplete="email" required></div>
+            <div>
+              <label for="f_type">Organization type <span class="opt">(optional)</span></label>
+              <select id="f_type" name="org_type">
+                <option value="">Select one</option>
+                <option>Physician practice</option>
+                <option>Hospital</option>
+                <option>Skilled nursing / rehab</option>
+                <option>Assisted living</option>
+                <option>Home health agency</option>
+                <option>Hospice</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="f_vol">Expected referrals <span class="opt">(optional)</span></label>
+              <select id="f_vol" name="referral_volume">
+                <option value="">Select one</option>
+                <option>1-5 per month</option>
+                <option>6-15 per month</option>
+                <option>16+ per month</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="full"><label for="f_msg">How can we work together? <span class="opt">(optional)</span></label><textarea id="f_msg" name="message" maxlength="1000"></textarea></div>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="f_website">Website</label><input id="f_website" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="consent">
+            <input type="checkbox" name="consent">
+            <span>I agree to receive calls and text messages, including automated ones, and emails from PointCare Health Services at the number and email provided. Consent is not required to work with us. Message frequency varies; message and data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</span>
+          </label>
+          <p class="form-note">To refer a specific patient, use the <a href="/refer">secure referral form</a> instead. Don't put patient information here.</p>
+          <div class="turnstile"></div>
+          <div class="form-status" role="alert"></div>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <aside class="side-card">
+      <h3>Reach us directly</h3>
+      <dl>
+        <dt>Intake line</dt><dd><a data-phone></a></dd>
+        <dt>Referral fax</dt><dd data-fax></dd>
+        <dt>Email</dt><dd><a data-email></a></dd>
+        <dt>Service area</dt><dd data-service-area></dd>
+        <dt>Hours</dt><dd>TODO: Mon–Fri, 8am–6pm</dd>
+      </dl>
+      <p class="form-note" style="margin-top:20px">In a medical emergency, call 911.</p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="legal">
+      <span>&copy; <span data-year></span> PointCare Health Services. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> · In an emergency, call 911.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Copy to .dev.vars for local development (never commit .dev.vars).
+# Cloudflare's "always passes" Turnstile test secret:
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+# Leave empty to dry-run (leads accepted, sent nowhere):
+GHL_WEBHOOK_URL=
+GHL_WEBHOOK_URL_FACILITY=
+ALLOWED_ORIGINS=

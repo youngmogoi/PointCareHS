@@ -1,0 +1,4 @@
+# Cloudflare Pages project. Static files live in ./site, server code in ./functions.
+name = "pointcarehs"
+pages_build_output_dir = "site"
+compatibility_date = "2026-10-01"
