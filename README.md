@@ -13,8 +13,13 @@ site/                     the website (what visitors see)
   assets/js/config.js     ← phone, fax, email, keys, form URL. Edit this first.
   assets/css/styles.css   brand colors at the top
   assets/img/             your logo and photos go here (see README inside)
-functions/api/lead.js     the /api/lead server function
+lib/lead.js               the /api/lead logic (shared by both hosts)
+api/lead.js               /api/lead wrapper for Vercel
+functions/api/lead.js     /api/lead wrapper for Cloudflare Pages
+vercel.json               Vercel settings (serves ./site, clean URLs, headers)
 ```
+
+The site runs on **Vercel** or **Cloudflare Pages**. Use one; the steps for each are below.
 
 ## How a lead flows
 
@@ -44,7 +49,19 @@ nowhere ("dry run"), which is good for testing the forms.
 
 ## Go-live setup
 
-### 1. Cloudflare (hosting, bot check)
+### 1a. Vercel hosting
+1. vercel.com → sign up with GitHub → **Add New → Project** → import `youngmogoi/PointCareHS`.
+2. Framework preset: **Other**. Leave build command empty; `vercel.json` already sets the
+   output directory to `site`.
+3. **Environment Variables** (before the first deploy): `TURNSTILE_SECRET_KEY`,
+   `GHL_WEBHOOK_URL`, optional `GHL_WEBHOOK_URL_FACILITY`.
+4. Deploy. Every push to `main` redeploys automatically; other branches get preview URLs.
+5. Settings → Domains → add your domain and follow the DNS instructions.
+
+Turnstile (the bot check) is a Cloudflare service but works on any host: create it in a free
+Cloudflare account (section 1b, step 2) and add your Vercel domains to the Turnstile site's hostnames.
+
+### 1b. Cloudflare Pages hosting (alternative to Vercel)
 1. Create a free Cloudflare account; add your domain (pointcarehs.com).
 2. **Turnstile** → Add site → copy the **site key** into `config.js` (`turnstileSiteKey`) and keep
    the **secret key** for step 4.
