@@ -62,7 +62,7 @@ Turnstile (the bot check) is a Cloudflare service but works on any host: create 
 Cloudflare account (section 1b, step 2) and add your Vercel domains to the Turnstile site's hostnames.
 
 ### 1b. Cloudflare Pages hosting (alternative to Vercel)
-1. Create a free Cloudflare account; add your domain (pointcarehs.com).
+1. Create a free Cloudflare account; add your domain (pointcarehealthservices.com).
 2. **Turnstile** → Add site → copy the **site key** into `config.js` (`turnstileSiteKey`) and keep
    the **secret key** for step 4.
 3. Deploy: `npx wrangler login`, then `npm run deploy` (or connect a GitHub repo in the dashboard).
@@ -109,4 +109,4 @@ Talk to your compliance advisor before running ads; Meta limits health-related a
 - [ ] Privacy policy reviewed by your attorney/compliance advisor
 - [ ] GHL HIPAA add-on + BAA signed; BAAs with any fax / call-tracking vendor too
 - [ ] Test each form on the live site and confirm the contact, tags, texts and alerts in GHL
-- [ ] Update the domain in `<link rel="canonical">` and JSON-LD if it isn't www.pointcarehs.com
+- [ ] Update the domain in `<link rel="canonical">` and JSON-LD if it changes

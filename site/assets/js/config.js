@@ -1,14 +1,14 @@
 // Site-wide settings. Edit this file first — every page reads from it.
 // Nothing here is secret: it ships to the browser. Secrets (webhook URLs,
-// Turnstile secret key) live in Cloudflare environment variables instead.
+// Turnstile secret key) live in your host's environment variables instead.
 window.PCHS_CONFIG = {
   company: {
     name: "PointCare Health Services",
     shortName: "PointCareHS",
     phone: "(555) 555-0100",      // TODO: your intake line
     fax: "(555) 555-0101",        // TODO: your referral fax line
-    email: "intake@pointcarehs.com", // TODO
-    serviceArea: "TODO: your counties / metro area",
+    email: "info@pointcarehealthservices.com",
+    serviceArea: "Virginia, North Carolina, and South Carolina",
   },
 
   // Cloudflare Turnstile site key (public). The value below is Cloudflare's

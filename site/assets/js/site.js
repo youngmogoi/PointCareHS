@@ -30,15 +30,73 @@
   }
 
   // ---- Scroll reveal -------------------------------------------------------
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
+  // Only sections below the fold are hidden, and only when the browser can
+  // reveal them again, so content never stays invisible.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("IntersectionObserver" in window && !reduce) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove("reveal-pending"); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("visible"));
+    document.querySelectorAll(".reveal").forEach((el) => {
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.classList.add("reveal-pending");
+        io.observe(el);
+      }
+    });
   }
+
+  // ---- Before/after slideshow ---------------------------------------------
+  document.querySelectorAll("[data-slideshow]").forEach((show) => {
+    const track = show.querySelector(".slide-track");
+    const slides = Array.from(show.querySelectorAll(".slide"));
+    const dotsBox = show.querySelector(".slide-dots");
+    if (!track || slides.length < 2) return;
+    let index = 0;
+    let timer = null;
+
+    const dots = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", `Show result ${i + 1}`);
+      b.addEventListener("click", () => { go(i); stop(); });
+      dotsBox.appendChild(b);
+      return b;
+    });
+
+    function go(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      slides.forEach((s, n) => s.setAttribute("aria-hidden", n === index ? "false" : "true"));
+      dots.forEach((d, n) => d.setAttribute("aria-current", n === index ? "true" : "false"));
+    }
+
+    // Auto-advance, unless the visitor prefers reduced motion. Any interaction stops it.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function start() { if (!reduceMotion && !timer) timer = setInterval(() => go(index + 1), 6000); }
+    function stop() { clearInterval(timer); timer = null; }
+
+    show.querySelector("[data-prev]").addEventListener("click", () => { go(index - 1); stop(); });
+    show.querySelector("[data-next]").addEventListener("click", () => { go(index + 1); stop(); });
+    show.addEventListener("mouseenter", stop);
+    show.addEventListener("focusin", stop);
+    show.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { go(index - 1); stop(); }
+      if (e.key === "ArrowRight") { go(index + 1); stop(); }
+    });
+
+    // Swipe on touch screens.
+    let startX = null;
+    track.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+    track.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) { go(index + (dx < 0 ? 1 : -1)); stop(); }
+      startX = null;
+    });
+
+    go(0);
+    start();
+  });
 
   // ---- First-touch attribution --------------------------------------------
   // Remembers where a visitor first came from (ad click ids, UTM tags) for 90
